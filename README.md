@@ -31,7 +31,7 @@ To Lock a file, right click in the folder the file is in and select "Git bash he
 `git lfs lock FILENAME.Ext`
 To Unlock a file use the command:
 `git lfs unlock FILENAME.Ext`
-The command `ls` will list all the files in the current folder if you don't know the extension.
+The command `ls` will list all the files in the current folder if you don't know the extension. To see all the files that are currently locked, `git lfs locks` will list who has locked what.
 
 ## Version History
 ### Alpha 1.0
