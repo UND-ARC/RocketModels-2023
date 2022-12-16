@@ -22,7 +22,7 @@ GitHub Desktop
 8) Set your local path to 'C:/Projects/RocketModels-2023'. Note, you may need to create manually the Projects folder (do not create the 'RocketModels-2023' folder)
 9) Open file explorer and navigate to 'C:/Projects/RocketModels-2023'
 10) Right click in the folder and select 'Git Bash Here'
-11) Enter the command `git lfs support`. This will enable the large file support.
+11) Enter the command `git lfs install`. This will enable the large file support.
 12) Message Neko'z in discord to get added to the members list for write access
 ### When editing files
 Since files are stored as binary (unreadable to humans) it is important that no two file have a merge conflict. This can be done by "locking" a file when we edit it which prevents others from making changes to it at the same time.
