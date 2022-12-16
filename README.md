@@ -28,7 +28,7 @@ GitHub Desktop
 Since files are stored as binary (unreadable to humans) it is important that no two file have a merge conflict. This can be done by "locking" a file when we edit it which prevents others from making changes to it at the same time.
 
 To Lock a file, right click in the folder the file is in and select "Git bash here". Then enter the command:
-`lfs lock FILENAME.Ext`
+`git lfs lock FILENAME.Ext`
 To Unlock a file use the command:
 `git lfs unlock FILENAME.Ext`
 The command `ls` will list all the files in the current folder if you don't know the extension.
