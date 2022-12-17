@@ -5,11 +5,11 @@ The CAD and OpenRocket files and assemblies for the NASA Student Launch 2023 Com
 ### Hardware
 Link to Hardware List [WIP]
 ### Software
-Solidworks Student Edition 2022
-OpenRocket
-GIT
-GIT LFS (Large File Support)
-GitHub Desktop
+- Solidworks Student Edition 2022
+- OpenRocket
+- GIT
+- GIT LFS (Large File Support)
+- GitHub Desktop
 ## Getting Started
 ### Installing and Setting Up the Repository
 1) Create a GitHub Account
