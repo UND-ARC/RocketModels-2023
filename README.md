@@ -18,7 +18,7 @@ GitHub Desktop
 4) Download and install GitHub Desktop [LINK](https://desktop.github.com/)
 5) Sign into GitHub Desktop with GitHub Account
 6) Create a local copy of the Repository opeing 'File -> Clone repository -> URL'
-7) Enter: (https://github.com/UND-ARC/RocketModels-2023.git)[https://github.com/UND-ARC/RocketModels-2023.git]
+7) Enter: [https://github.com/UND-ARC/RocketModels-2023.git](https://github.com/UND-ARC/RocketModels-2023.git)
 8) Set your local path to 'C:/Projects/RocketModels-2023'. Note, you may need to create manually the Projects folder (do not create the 'RocketModels-2023' folder)
 9) Open file explorer and navigate to 'C:/Projects/RocketModels-2023'
 10) Right click in the folder and select 'Git Bash Here'
@@ -37,9 +37,10 @@ To sumarize the editing process:
 1) Pull the current files from the server
 2) Lock the file using `git lfs lock FILENAME`
 3) Edit the file
-4) Commit the edits with a description using GitHub Desktop
-5) Pull and Push the new commits to the server (Contact Neko'z or Galbatorix if you get an error!)
-6) Unlock the file using `git lfs unlock FILENAME`
+4) Add changes to the commits `git add FILENAME` or `git add --all`
+5) Commit the edits with a description using GitHub Desktop with `git commit -m 'MESSAGE GOES HERE'`
+6) `git pull` and `git push` the new commits to the server (Contact Neko'z or Galbatorix if you get an error!)
+7) Unlock the file using `git lfs unlock FILENAME`
 
 ## Version History
 ### Alpha 1.0
