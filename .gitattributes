@@ -1,0 +1,6 @@
+# Set all SolidWorks files to be lfs and lockable
+*.SLDASM filter=lfs diff=lfs merge=lfs -text lockable
+*.SLDPRT filter=lfs diff=lfs merge=lfs -text lockable
+*.SLDDRW filter=lfs diff=lfs merge=lfs -text lockable
+# Set OpenRocket files to be lfs and lockable
+*.ork filter=lfs diff=lfs merge=lfs -text lockable
