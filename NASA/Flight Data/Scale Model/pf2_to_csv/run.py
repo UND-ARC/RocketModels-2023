@@ -10,7 +10,7 @@
         Mason Motschke
 
     Contributors:
-        Tom Stokke
+        FileUtil.py - Tom Stokke
 """
 import csv
 import os
