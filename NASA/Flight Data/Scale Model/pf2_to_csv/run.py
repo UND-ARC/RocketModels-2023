@@ -33,41 +33,49 @@ def buildRow (j, headers, data):  # Returns a Dictionary Representing the Next R
 
 def main ():
     try:
-        fileName = SOF(msg='Choose a File: ', title='Files', default='*', filetypes='*.pf2')
-        openFile = open(fileName)
-    except TypeError:
-        print("\n\n\n\n\n -- Error: Invalid File Extension\n\n\n      - Valid Extensions: '.pf2'\n\n\n -- File Conversion Canceled\n\n\n -- Closing Application...\n\n\n\n\n\n")
-        sleep(5); exit()
+        try:
+            fileName = SOF(msg='Choose a File: ', title='Files', default='*', filetypes='*.pf2')
 
-    print("\n" * 5); print(" -- File Selected: " + str(fileName) + "\n\n"); sleep(3)
-    # Fixes different File Extension Issue ---\/
-    fileName = fileName.strip().split('.')
-    fileName.append('csv')
-    fileName.pop(-2)
-    csvFileName = '.'.join(fileName)
-    # ----------------------------------------/\
-    print(" -- CSV File Name: " + str(csvFileName) + "\n\n\n -- Converting...\n\n"); sleep(3)
+            test = fileName.strip().split('.')
+            if (test[-1] != 'pf2'): raise TypeError
 
-    data = []; i = 0;
-    for line in openFile:
-        if (line.startswith('Data:')):
-            fieldNameLine = line.strip();
-        if (line[0].isnumeric()):
-            line = line.strip().split(', ')
-            data.append(line)
-            i += 1
-    openFile.close()
+            openFile = open(fileName)
+        except TypeError:
+            print("\n\n\n\n\n -- Error: Invalid File Extension\n\n\n      - Valid Extensions: '.pf2'\n\n\n -- File Conversion Canceled\n\n\n -- Closing Application...\n\n\n\n\n\n")
+            sleep(5); return
 
-    with open(csvFileName, 'w', newline='') as file:
-        fieldNames = getFieldNames(fieldNameLine)
-        writer = DictWriter(file, fieldnames=fieldNames)
+        print("\n" * 5); print(" -- File Selected: " + str(fileName) + "\n\n"); sleep(3)
 
-        writer.writeheader()
-        for j in range(0, i):
-            writer.writerow(buildRow(j, fieldNames, data))
-    file.close()
-    
-    print(" -- Success: File Converted to '.csv'\n\n\n -- Closing Application...\n\n")
-    sleep(5)
+        fileName = fileName.strip().split('.')
+        fileName.append('csv')
+        fileName.pop(-2)
+        csvFileName = '.'.join(fileName)
+
+        print(" -- CSV File Name: " + str(csvFileName) + "\n\n\n -- Converting...\n\n"); sleep(3)
+
+        data = []; i = 0;
+        for line in openFile:
+            if (line.startswith('Data:')):
+                fieldNameLine = line.strip();
+            if (line[0].isnumeric()):
+                line = line.strip().split(', ')
+                data.append(line)
+                i += 1
+        openFile.close()
+
+        with open(csvFileName, 'w', newline='') as file:
+            fieldNames = getFieldNames(fieldNameLine)
+            writer = DictWriter(file, fieldnames=fieldNames)
+
+            writer.writeheader()
+            for j in range(0, i):
+                writer.writerow(buildRow(j, fieldNames, data))
+        file.close()
+        
+        print(" -- Success: File Converted to '.csv'\n\n\n -- Closing Application...\n\n")
+        sleep(5); return
+    except:
+        print(" -- Error: An Error has Occured!\n\n\n -- File Conversion Cancelled\n\n\n -- Closing Application...\n\n")
+        sleep(5); return
 
 main();
