@@ -1,4 +1,6 @@
 """
+    Python Version: 3.11.0
+
     Description: Converts a '.pf2' file to a '.csv'
 
     Output: Output '.csv' File will be in the Same 'Folder' / 'Directory' as the Original '.pf2' File
@@ -30,17 +32,20 @@ def buildRow (j, headers, data):  # Returns a Dictionary Representing the Next R
     return row
 
 def main ():
-    fileName = SOF('Choose a File: ')
     try:
+        fileName = SOF(msg='Choose a File: ', title='Files', default='*', filetypes='*.pf2')
         openFile = open(fileName)
-    except:
-        print('\n' * 5)
-        print(" -- Error: File Conversion Canceled\n\n -- Closing Application...\n")
-        print('\n' * 5)
+    except TypeError:
+        print("\n\n\n\n\n -- Error: Invalid File Extension\n\n\n      - Valid Extensions: '.pf2'\n\n\n -- File Conversion Canceled\n\n\n -- Closing Application...\n\n\n\n\n\n")
         sleep(5); exit()
 
     print("\n" * 5); print(" -- File Selected: " + str(fileName) + "\n\n"); sleep(3)
-    csvFileName = fileName[:-4] + '.csv'
+    # Fixes different File Extension Issue ---\/
+    fileName = fileName.strip().split('.')
+    fileName.append('csv')
+    fileName.pop(-2)
+    csvFileName = '.'.join(fileName)
+    # ----------------------------------------/\
     print(" -- CSV File Name: " + str(csvFileName) + "\n\n\n -- Converting...\n\n"); sleep(3)
 
     data = []; i = 0;
