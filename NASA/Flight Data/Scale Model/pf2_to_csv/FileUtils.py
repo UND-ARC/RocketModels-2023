@@ -1,3 +1,6 @@
+"""
+    Author: Tom Stokke
+"""
 #egversion = __doc__.split()[1]
 
 __all__ = [
