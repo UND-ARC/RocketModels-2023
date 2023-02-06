@@ -1,7 +1,9 @@
 """
-    Python Version: 3.11.0
+    PF2 to CSV Converter Project
 
-    Description: Converts a '.pf2' file to a '.csv'
+    Project Description: Converts a '.pf2' file to a '.csv'
+
+    Python Version: 3.11.0
 
     Output: Output '.csv' File will be in the Same 'Folder' / 'Directory' as the Original '.pf2' File
 
@@ -11,7 +13,7 @@
     Author: 
         run.py - Mason Motschke
 
-    Contributors:
+    Project Contributor(s):
         FileUtils.py - Tom Stokke
 """
 from csv import DictWriter

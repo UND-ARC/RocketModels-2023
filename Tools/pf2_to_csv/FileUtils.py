@@ -1,5 +1,16 @@
 """
-    Author: Tom Stokke
+    Project: Part of PF2 to CSV Converter Project
+
+    Project Description: Converts a '.pf2' file to a '.csv'
+
+    Dependencies:
+        None
+
+    Author:
+        Tom Stokke
+
+    Project Contributor(s):
+        run.py - Mason Motschke
 """
 #egversion = __doc__.split()[1]
 
