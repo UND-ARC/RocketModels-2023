@@ -18,18 +18,33 @@ from csv import DictWriter
 from time import sleep
 from FileUtils import selectOpenFile as SOF
 
-def getFieldNames (fieldNameLine):  # Returns a List of the Column Headers / Field Names of the CSV
-
-    fieldNameLine = fieldNameLine[7:-1].strip().split(', ')
-    return fieldNameLine
-
 def buildRow (headers, data):  # Returns a Dictionary Representing the Next Row to Print to the CSV File
-
     row = {}; i = 0
     for head in headers:
         row[head] = data[i]
         i += 1
     return row
+
+def getCSVFileName (fileName):  # Returns Name of the '.csv' File that will be Created from '.pf2'
+    temp = fileName.strip().split('.')
+    temp.append('csv')
+    temp.pop(-2)
+    return '.'.join(temp)
+
+def getFieldNames (fieldNameLine):  # Returns a List of the Column Headers / Field Names of the CSV
+    return fieldNameLine[7:-1].strip().split(', ')
+
+def getPF2Data (pf2File):  # Returns tuple consisting of needed '.pf2' data : [Data Rows, # of Lines Read, Field Names]
+    data = []; i = 0
+    for line in pf2File:
+        if (line.startswith('Data:')):
+            fieldNameLine = line.strip();
+        if (line[0].isnumeric()):
+            line = line.strip().split(', ')
+            data.append(line)
+            i += 1
+    pf2File.close()
+    return [data, i, getFieldNames(fieldNameLine)]
 
 def main ():
     try:
@@ -46,30 +61,19 @@ def main ():
 
         print("\n" * 5); print(" -- File Selected: " + str(fileName) + "\n\n"); sleep(3)
 
-        temp = fileName.strip().split('.')
-        temp.append('csv')
-        temp.pop(-2)
-        csvFileName = '.'.join(temp)
+        csvFileName = getCSVFileName(fileName)
 
         print(" -- CSV File Name: " + str(csvFileName) + "\n\n\n -- Converting...\n\n"); sleep(3)
 
-        data = []; i = 0;
-        for line in selectedFile:
-            if (line.startswith('Data:')):
-                fieldNameLine = line.strip();
-            if (line[0].isnumeric()):
-                line = line.strip().split(', ')
-                data.append(line)
-                i += 1
-        selectedFile.close()
+        tuple = getPF2Data(selectedFile)  # Inside of tuple : ['.pf2' Data, Number of Lines Read, Field Names]
+                                          #                   [      0                1                2     ] 
 
         with open(csvFileName, 'w', newline='') as file:
-            fieldNames = getFieldNames(fieldNameLine)
-            writer = DictWriter(file, fieldnames=fieldNames)
+            writer = DictWriter(file, fieldnames=tuple[2])  #  <------------- #2
 
             writer.writeheader()
-            for j in range(0, i):
-                writer.writerow(buildRow(fieldNames, data[j]))
+            for j in range(0, tuple[1]):  #  <------------------------------- #1
+                writer.writerow(buildRow(tuple[2], tuple[0][j]))  #  <------- #0 and #2
         file.close()
         
         print(" -- Success: File Converted to '.csv'\n\n\n -- Closing Application...\n\n")
