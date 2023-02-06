@@ -1,7 +1,9 @@
 """
-    Python Version: 3.11.0
+    PF2 to CSV Converter Project
 
-    Description: Converts a '.pf2' file to a '.csv'
+    Project Description: Converts a '.pf2' file to a '.csv'
+
+    Python Version: 3.11.0
 
     Output: Output '.csv' File will be in the Same 'Folder' / 'Directory' as the Original '.pf2' File
 
@@ -11,7 +13,7 @@
     Author: 
         run.py - Mason Motschke
 
-    Contributors:
+    Project Contributor(s):
         FileUtils.py - Tom Stokke
 """
 from csv import DictWriter
@@ -59,7 +61,7 @@ def main ():
             print("\n\n\n\n\n -- Error: Invalid File Extension\n\n\n      - Valid Extensions: '.pf2'\n\n\n -- File Conversion Canceled\n\n\n -- Closing Application...\n\n\n\n\n\n")
             sleep(5); return
 
-        print("\n" * 5); print(" -- File Selected: " + str(fileName) + "\n\n"); sleep(3)
+        print("\n\n\n\n\n -- File Selected: " + str(fileName) + "\n\n"); sleep(3)
 
         csvFileName = getCSVFileName(fileName)
 
