@@ -4,3 +4,5 @@
 *.SLDDRW filter=lfs diff=lfs merge=lfs -text lockable
 # Set OpenRocket files to be lfs and lockable
 *.ork filter=lfs diff=lfs merge=lfs -text lockable
+# MS Office files
+*.xlsx filter=lfs diff=lfs merge=lfs -text lockable
